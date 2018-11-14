@@ -1,0 +1,19 @@
+{
+  "name": "webgl-stats",
+  "version": "0.1.0",
+  "description": "WebGL stats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandojsg/webgl-stats.git"
+  },
+  "author": "Fernando Serrano <fernandojsg@gmail.com> (http://fernandojsg.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fernandojsg/webgl-stats/issues"
+  },
+  "homepage": "https://github.com/fernandojsg/webgl-stats#readme"
+}
