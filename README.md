@@ -37,7 +37,7 @@ WEBGLSTATS = require('webgl-stats');
 ### Browser
 
 ```html
-  <script src="unpkg.com/webgl-stats@0.2.0/dist/webgl-stats.js"></script>
+<script src="unpkg.com/webgl-stats@0.2.0/dist/webgl-stats.js"></script>
 ```
 
 ## Usage
