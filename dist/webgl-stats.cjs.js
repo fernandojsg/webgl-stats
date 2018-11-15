@@ -1,6 +1,50 @@
-import Stats from 'incremental-stats-lite';
-
 'use strict';
+
+class PerfStats {
+  constructor() {
+    this.n = 0;
+    this.min = Number.MAX_VALUE;
+    this.max = -Number.MAX_VALUE;
+    this.sum = 0;
+    this.mean = 0;
+    this.q = 0;
+  }
+
+  get variance() {
+    return this.q / this.n;
+  }
+
+  get standard_deviation() {
+    return Math.sqrt(this.q / this.n);
+  }
+
+  update(value) {
+    var num = parseFloat(value);
+    if (isNaN(num)) {
+      // Sorry, no NaNs
+      return;
+    }
+    this.n++;
+    this.min = Math.min(this.min, num);
+    this.max = Math.max(this.max, num);
+    this.sum += num;
+    const prevMean = this.mean;
+    this.mean = this.mean + (num - this.mean) / this.n;
+    this.q = this.q + (num - prevMean) * (num - this.mean);
+  }
+
+  getAll() {
+    return {
+      n: this.n,
+      min: this.min,
+      max: this.max,
+      sum: this.sum,
+      mean: this.mean,
+      variance: this.variance,
+      standard_deviation: this.standard_deviation
+    };
+  }  
+}
 
 function WebGLStats () {
 
@@ -17,14 +61,14 @@ function WebGLStats () {
     numVertices:0,
     numPoints:0,
     numBindTextures:0
-  }
+  };
 
   var stats = {
-    drawCalls: new Stats(),
-    useProgramCalls: new Stats(),
-    faces: new Stats(),
-    vertices: new Stats(),
-    bindTextures: new Stats()
+    drawCalls: new PerfStats(),
+    useProgramCalls: new PerfStats(),
+    faces: new PerfStats(),
+    vertices: new PerfStats(),
+    bindTextures: new PerfStats()
   };
 
   function frameEnd() {
@@ -161,4 +205,6 @@ function WebGLStats () {
   }
 }
 
-export default WebGLStats();
+var index = WebGLStats();
+
+module.exports = index;

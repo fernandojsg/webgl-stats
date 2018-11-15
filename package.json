@@ -4,7 +4,9 @@
   "description": "WebGL stats",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "start": "http-server",
+    "dev": "concurrently --names \"ROLLUP,SERVER\" -c \"bgGreen.bold,bgBlue.bold\" \"rollup -c -w -m inline\" \"npm run start\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/fernandojsg/webgl-stats/issues"
   },
-  "homepage": "https://github.com/fernandojsg/webgl-stats#readme"
+  "homepage": "https://github.com/fernandojsg/webgl-stats#readme",
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "http-server": "^0.11.1",
+    "rollup": "^0.67.1",
+    "rollup-plugin-node-resolve": "^3.4.0"
+  },
+  "dependencies": {
+    "incremental-stats-lite": "^0.1.1"
+  }
 }
