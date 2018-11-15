@@ -1,5 +1,7 @@
 # webgl-stats
 
+*If you are looking for a UI representation of this stats you should take a look at: https://github.com/fernandojsg/webg-stats-ui*
+
 Keep tracks of the number of WebGL calls on your application by hooking the WebGL1 and WebGL2 APIs:
 * DrawCalls:
   * DrawArrays
