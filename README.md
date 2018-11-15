@@ -54,9 +54,11 @@ On every frame you should call `frameStart` before your render call and `frameEn
 ```javascript
 function animate() {
   requestAnimationFrame( animate );
+  
   WEBGLSTATS.frameStart();
   render();
   WEBGLSTATS.frameEnd();
+  
   showStats();
 }
 ```
