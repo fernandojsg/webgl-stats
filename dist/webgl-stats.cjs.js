@@ -85,7 +85,7 @@ function WebGLStats () {
     };
   }
   
-  if (WebGL2RenderingContext) {
+  if ('WebGL2RenderingContext' in window) {
     WebGL2RenderingContext.prototype.drawArraysInstanced = _h( WebGL2RenderingContext.prototype.drawArraysInstanced, function () {
       data.numDrawArraysInstancedCalls++;
       data.numDrawCalls++;
