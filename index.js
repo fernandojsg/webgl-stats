@@ -115,8 +115,17 @@ function WebGLStats () {
     data.numPoints = 0;
     data.numBindTextures = 0;
   }
-  
+
+  function isWebGLContext(ctx) {
+    return (ctx instanceof WebGLRenderingContext) || (window.WebGL2RenderingContext && (ctx instanceof WebGL2RenderingContext));
+  }
+
   function setupExtensions(context) {
+    if (!isWebGLContext(context)) {
+      console.warn("WEBGL-STATS: Provided context is not WebGL");
+      return;
+    }
+
     var ext = context.getExtension('ANGLE_instanced_arrays');
     if (!ext) {
       return;
